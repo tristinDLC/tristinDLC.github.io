@@ -1,93 +1,98 @@
-# The Minimal theme
+## Phantom for Jekyll
 
-[![Build Status](https://travis-ci.org/pages-themes/minimal.svg?branch=master)](https://travis-ci.org/pages-themes/minimal) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-minimal.svg)](https://badge.fury.io/rb/jekyll-theme-minimal)
+A minimalist, responsive portfolio theme for [Jekyll](http://jekyllrb.com/) with Bootstrap.
 
-*Minimal is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/minimal), or even [use it today](#usage).*
+![preview](preview.jpg)
 
-![Thumbnail of minimal](thumbnail.png)
+[See it in action](http://jamigibbs.github.io/phantom/).
 
-## Usage
+## Fancy using it for your own site?
 
-To use the Minimal theme:
+Here are some steps to get you started:
 
-1. Add the following to your site's `_config.yml`:
+1. Clone this repo and cd into the directory:
 
-    ```yml
-    theme: jekyll-theme-minimal
-    ```
+  ```bash
+  git clone https://github.com/jamigibbs/phantom.git your-dir-name && cd your-dir-name
+  ```
 
-2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
+2. Run:
 
-    ```ruby
-    gem "github-pages", group: :jekyll_plugins
-    ```
+  ```bash
+  gem install bundler
+  bundle install
+  bundle exec jekyll serve
+  ```
 
+  You may need to append your commands with `sudo` if you're getting a permissions error.
 
+  _Don't have Jekyll yet? [Get `er installed then!](http://jekyllrb.com/docs/installation/)_
 
-## Customizing
+3. Visit in your browser at:
 
-### Configuration variables
+  `http://127.0.0.1:4000`
 
-Minimal will respect the following variables, if set in your site's `_config.yml`:
+## Launching with Github Pages :rocket:
 
-```yml
-title: [The title of your site]
-description: [A short description of your site's purpose]
+Jekyll + Github pages is a marriage made in heaven. You can [use your own custom domain name](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/) or use the default Github url (ie. http://username.github.io/repository) and not bother messing around with DNS settings.
+
+## Theme Features
+
+### Navigation
+
+Navigation can be customized in `_config.yml` under the `nav_item` key. Default settings:
+
+```yaml
+nav_item:
+    - { url: '/', text: 'Home' }
+    - { url: '/about', text: 'About' }
 ```
 
-Additionally, you may choose to set the following optional variables:
+Set the `nav_enable` variable to false in `_config.yml` to disable navigation.
 
-```yml
-logo: [Location of the logo]
-show_downloads: ["true" or "false" to indicate whether to provide a download URL]
-google_analytics: [Your Google Analytics tracking ID]
+### Contact Form
+
+You can display a contact form within the modal window template. This template is already setup to use the [Formspree](https://formspree.io) email system. You'll just want to add your email address to the form in `/_includes/contact-modal.html`.
+
+Place the modal window template in any place you'd like the user to click for the contact form.
+The template will display a link to click for the contact form modal window:
+
+```liquid
+{% include contact.html %}
+{% include contact-modal.html %}
 ```
 
-### Stylesheet
+### Animation Effects
 
-If you'd like to add your own custom styles:
+Animations with CSS classes are baked into the theme. To animate a section or element, simply add the animation classes:
 
-1. Create a file called `/assets/css/style.scss` in your site
-2. Add the following content to the top of the file, exactly as shown:
-    ```scss
-    ---
-    ---
+```html
+<div id="about-me" class="wow fadeIn">
+  I'm the coolest!
+</div>
+```
 
-    @import "{{ site.theme }}";
-    ```
-3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
+For a complete list of animations, see the [animation list](http://daneden.github.io/animate.css/).
 
-### Layouts
+### Pagination
 
-If you'd like to change the theme's HTML layout:
+By default, pagination on the home page will activate after 10 posts. You can change this within `_config.yml`. You can add the pagination to other layouts with:
 
-1. [Copy the original template](https://github.com/pages-themes/minimal/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
-2. Create a file called `/_layouts/default.html` in your site
-3. Paste the default layout content copied in the first step
-4. Customize the layout as you'd like
+```liquid
+  {% for post in paginator.posts %}
+    {% include post-content.html %}
+  {% endfor %}
 
-## Roadmap
+  {% include pagination.html %}
+```
 
-See the [open issues](https://github.com/pages-themes/minimal/issues) for a list of proposed features (and known issues).
+Read more about the [pagination plugin](http://jekyllrb.com/docs/pagination/).
 
-## Project philosophy
+## Credit
 
-The Minimal theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
+* Bootstrap, http://getbootstrap.com/, (C) 2011 - 2016 Twitter, Inc., [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE)
 
-## Contributing
+* Wow, https://github.com/matthieua/WOW, (C) 2014 - 2016 Matthieu Aussaguel
+, [GPL](https://github.com/matthieua/WOW#open-source-license)
 
-Interested in contributing to Minimal? We'd love your help. Minimal is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
-
-### Previewing the theme locally
-
-If you'd like to preview the theme locally (for example, in the process of proposing a change):
-
-1. Clone down the theme's repository (`git clone https://github.com/pages-themes/minimal`)
-2. `cd` into the theme's directory
-3. Run `script/bootstrap` to install the necessary dependencies
-4. Run `bundle exec jekyll serve` to start the preview server
-5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
-
-### Running tests
-
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` one before the test script will work.
+* Animate.css, https://github.com/daneden/animate.css, (C) 2016 Daniel Eden, [MIT](https://github.com/daneden/animate.css/blob/master/LICENSE)
