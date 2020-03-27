@@ -16,7 +16,7 @@
 title: "Hello. I'm Tristin Bomar."
 email: 'tristinDLC@gmail.com'
 description: "I'm a software developer and designer from Seattle :umbrella: creating useful things for the web."
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://tristinDLC.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
 twitter_username: 'tristinDLC'
 github_username: 'tristinDLC'
@@ -89,8 +89,8 @@ pagination:
 ############################################################
 
 ### Phantom settings
-footer_text: '© 2018 Jami Gibbs'
-admin_name: 'Jami Gibbs'
+footer_text: '© 2020 Tristin Bomar'
+admin_name: 'Tristin Bomar'
 google_analytics: "UA-9999999-99" # Update with your own tracking ID
 enable_contact: false
 
