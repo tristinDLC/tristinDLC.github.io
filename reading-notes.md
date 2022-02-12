@@ -12,4 +12,4 @@ This is a general dump of all of my notes for the 201 Course. There are sections
 * [Class 01](/class-01.md)
 
 
-![Code Fellows Logo](https://cdn.geekwire.com/wp-content/uploads/2015/04/Code-fellows-logo-stacked-lettering1-300x133.png)
+![Code Fellows Logo](https://cdn.geekwire.com/wp-content/uploads/2015/04/Code-fellows-logo-stacked-lettering1-300x133.png| width=200)
